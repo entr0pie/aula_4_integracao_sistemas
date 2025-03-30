@@ -1,0 +1,23 @@
+meta {
+  name: criar produto
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:3000/produtos
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "nomeDoProduto": "Brisadeiro",
+      "fornecedor": "Ponto do Seu Zé",
+      "enderecoFornecedor": "Biqueira",
+      "quantidade": 12,
+      "descricao": "Gostoso demais",
+      "dataRegistro": "2024-01-01",
+      "dataUpdate": "2024-01-01"
+  }
+}

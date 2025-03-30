@@ -1,0 +1,23 @@
+meta {
+  name: atualizar produto
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:3000/produtos/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "nomeDoProduto": "Brisadeiro",
+      "fornecedor": "Ponto do Seu Zé",
+      "enderecoFornecedor": "Biqueira",
+      "quantidade": 12,
+      "descricao": "Gostoso demais",
+      "dataRegistro": "2024-01-01",
+      "dataUpdate": "2024-01-01"
+  }
+}

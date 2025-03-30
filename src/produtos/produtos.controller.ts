@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Inject, Param, Post, Put } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Delete, Get, Inject, NotFoundException, Param, Post, Put } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ProdutoDTO } from 'src/dto/ProdutoDto';
 import { ProdutoModel } from 'src/models/ProdutoModel';
@@ -16,10 +16,16 @@ export class ProdutosController {
     }
 
     @Get('/:id')
-    public findById(@Param('id') id: number) {
-        return this.repository.findOne({where: { 
+    public async findById(@Param('id') id: number) {
+        const produto = await this.repository.findOne({where: { 
             id: id
         }});
+
+        if (!produto) {
+            throw new NotFoundException();
+        }
+
+        return produto;
     }
 
     @Post()
